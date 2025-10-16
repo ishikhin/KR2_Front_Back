@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .contact-card {
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-light">
+<div class="container-fluid p-0">
+    <!-- Header -->
+    <header class="bg-primary text-white py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h1 class="text-light">Контакты</h1>
+                    <p class="mb-0 opacity-75">Студент разработчик</p>
+                </div>
+                <div class="col-auto">
+                    <span class="badge bg-light text-primary">ЭФБО-04-24</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="bi bi-house me-1"></i>Главная
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">
+                            <i class="bi bi-folder me-1"></i>Проекты
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="diary.html">
+                            <i class="bi bi-journal me-1"></i>Дневник
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contacts.html">
+                            <i class="bi bi-telephone me-1"></i>Контакты
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+        <!-- Contacts Header -->
+        <section class="mb-4">
+            <h2 class="text-primary mb-3">
+                <i class="bi bi-envelope-fill me-2"></i>Свяжитесь со мной
+            </h2>
+            <p class="text-muted">Есть вопросы или предложения? Напишите мне, и я обязательно отвечу!</p>
+        </section>
+
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-lg-8 mb-5">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-light">
+                        <h3 class="card-title h5 mb-0">
+                            <i class="bi bi-chat-dots me-2"></i>Форма обратной связи
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Имя</label>
+                                <input type="text" class="form-control" id="name" placeholder="Введите ваше имя">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Введите ваш email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Тема сообщения</label>
+                                <input type="text" class="form-control" id="subject"
+                                       placeholder="О чем вы хотите поговорить?">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Сообщение</label>
+                                <textarea class="form-control" id="message" rows="5"
+                                          placeholder="Напишите ваше сообщение..."></textarea>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="bi bi-send me-2"></i>Отправить сообщение
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="card shadow-sm border-0 mt-4">
+                    <div class="card-header bg-light">
+                        <h3 class="card-title h5 mb-0">
+                            <i class="bi bi-person-lines-fill me-2"></i>Мои контакты
+                        </h3>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <h6 class="mb-1">Телефон</h6>
+                            <span class="text-muted">8 800 555 35 35</span>
+                        </div>
+                        <div class="mb-3">
+                            <h6 class="mb-1">Email</h6>
+                            <a href="vb.vb.gml@mail.ru" class="text-decoration-none">vb.vb.gml@mail.ru</a>
+                        </div>
+
+                        <div class="mb-3">
+                            <h6 class="mb-1">GitHub</h6>
+                            <a href="https://github.com/ishikhin?tab=repositories" class="text-decoration-none"
+                               target="_blank">https://github.com/ishikhin?tab=repositories</a>
+                        </div>
+
+                        <div class="mb-3">
+                            <h6 class="mb-1">Telegram</h6>
+                            <span class="text-muted">@user.....</span>
+                        </div>
+
+                        <div class="mb-3">
+                            <h6 class="mb-1">Местоположение</h6>
+                            <span class="text-muted">Москва, Россия</span>
+                        </div>
+
+                        <div class="mb-3">
+                            <h6 class="mb-1">Учебное заведение</h6>
+                            <span class="text-muted">РТУ МИРЭА</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 Портфолио студента. Все права защищены.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="contacts.html" class="text-white text-decoration-none me-3">Контакты</a>
+                    <a href="#" class="text-white text-decoration-none">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
