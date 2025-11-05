@@ -1,28 +1,106 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Портфолио Бесединой Виктории Сергеевны - студента разработчика. Проекты, навыки и контакты.">
     <title>Мое портфолио</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
+        :root {
+            color-scheme: light dark;
+            --primary-color: #2563eb;
+        }
+
+        .badge-custom-primary {
+            background-color: #0056b3 !important;
+            color: white !important;
+        }
+        .badge-custom-danger {
+            background-color: #dc3545 !important;
+            color: white !important;
+        }
+        .badge-custom-warning {
+            background-color: #ffc107 !important;
+            color: #212529 !important;
+        }
+        .badge-custom-success {
+            background-color: #198754 !important;
+            color: white !important;
+        }
+        .badge-custom-info {
+            background-color: #0dcaf0 !important;
+            color: #212529 !important;
+        }
+        .badge-custom-secondary {
+            background-color: #6c757d !important;
+            color: white !important;
+        }
+
+        .brand-label {
+            background: linear-gradient(135deg, rgba(248, 147, 191, 0.98) 0%, #acfbf9 100%);
+            color: black;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .skip-link {
+            position: absolute;
+            left: 1rem;
+            top: -100%;
+            z-index: 10000;
+            padding: .5rem .75rem;
+            background: #111;
+            color: #fff;
+            border-radius: .5rem;
+            text-decoration: none;
+        }
+
+        .skip-link:focus,
+        .skip-link:focus-visible {
+            top: 1rem;
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        a, button, input, textarea {
+            outline-offset: 2px;
+        }
+
+        @media (pointer: coarse){
+            a, button, .nav-link {
+                min-height: 44px;
+                padding: .75rem 1rem;
+            }
+        }
+
         .sticky-header {
             position: sticky;
             top: 0;
             z-index: 1020;
             isolation: isolate;
-            padding-top: env(safe-area-inset-top);
-            margin-top: calc(-1 * env(safe-area-inset-top));
+            padding-top: calc(.75rem + env(safe-area-inset-top));
+            padding-inline-start: calc(1rem + env(safe-area-inset-left));
+            padding-inline-end: calc(1rem + env(safe-area-inset-right));
+            padding-bottom: .75rem;
+            background: #202224;
+            box-shadow: 0 1px 3px rgba(0,0,0,.1);
         }
 
         .hero-section {
             position: relative;
-            height: 30vh;
-            min-height: 50px;
+            height: 40vh;
+            min-height: 300px;
+            max-height: 500px;
             overflow: hidden;
-            background: linear-gradient(135deg, #185df8 10%, #56d1f3 100%);
         }
 
         .hero-image {
@@ -40,6 +118,8 @@
             text-align: center;
             color: white;
             z-index: 2;
+            width: 100%;
+            padding: 0 clamp(1rem, calc(.5rem + 1vw), 2rem);
         }
 
         .hero-overlay {
@@ -52,125 +132,172 @@
             z-index: 1;
         }
 
+        .section-title {
+            font-size: clamp(1.5rem, 1.1rem + 2vw, 2rem);
+        }
+
+        main {
+            padding-inline: clamp(1rem, calc(.5rem + 1vw), 2rem);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            min-width: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        @media (prefers-contrast: more) {
+            .btn, .card {
+                box-shadow: inset 0 0 0 2px #fff;
+            }
+        }
+
+        .safe-footer {
+            padding-bottom: calc(1rem + env(safe-area-inset-bottom)) !important;
+        }
+
         @media (max-width: 768px) {
             .hero-section {
                 height: 35vh;
                 min-height: 250px;
             }
+
+            .brand-label {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                height: 30vh;
+                min-height: 200px;
+            }
         }
     </style>
 </head>
 <body class="bg-light">
-<div class="container-fluid p-0">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-header">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">
-                            <i class="bi bi-house me-1"></i>Главная
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/projects.html">
-                            <i class="bi bi-newspaper me-1"></i>Проекты
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/diary.html">
-                            <i class="bi bi-code-slash me-1"></i>Дневник
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/contacts.html">
-                            <i class="bi bi-cart me-1"></i>Контакты
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!-- Skip link для клавиатурной навигации -->
+<a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
 
-    <section class="hero-section">
+<div class="container-fluid p-0">
+    <!-- Sticky Header -->
+    <header class="sticky-header" aria-label="Основная навигация">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark p-0">
+                <div class="container-fluid">
+                    <a class="navbar-brand fw-bold" href="index.html">
+                        <span class="brand-label">V</span>Портфолио
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-expanded="false"
+                            aria-label="Переключить навигацию">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="index.html" aria-current="page">
+                                    <i class="bi bi-house me-1" aria-hidden="true"></i>Главная
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="pages/projects.html">
+                                    <i class="bi bi-folder me-1" aria-hidden="true"></i>Проекты
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="pages/diary.html">
+                                    <i class="bi bi-journal me-1" aria-hidden="true"></i>Дневник
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="pages/contacts.html">
+                                    <i class="bi bi-telephone me-1" aria-hidden="true"></i>Контакты
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section с оптимизированным изображением -->
+    <section class="hero-section" aria-labelledby="hero-title">
         <div class="hero-overlay"></div>
         <picture>
-            <source
-                    srcset="
-                    images/hero-image-400.avif 400w,
-                    images/hero-image-800.avif 800w,
-                    images/hero-image-1200.avif 1200w,
-                    images/hero-image-1600.avif 1600w,
-                    images/hero-image-2000.avif 2000w
-                "
-                    type="image/avif"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-            >
-            <source
-                    srcset="
-                    images/hero-image-400.webp 400w,
-                    images/hero-image-800.webp 800w,
-                    images/hero-image-1200.webp 1200w,
-                    images/hero-image-1600.webp 1600w,
-                    images/hero-image-2000.webp 2000w
-                "
-                    type="image/webp"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-            >
-            <img
-                    src="images/hero-image-800.jpg"
-                    srcset="
-                    images/hero-image-400.jpg 400w,
-                    images/hero-image-800.jpg 800w,
-                    images/hero-image-1200.jpg 1200w,
-                    images/hero-image-1600.jpg 1600w,
-                    images/hero-image-2000.jpg 2000w
-                "
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
-                    class="hero-image"
-                    loading="eager"
-                    width="1200"
-                    height="600"
-            >
+            <source srcset="images/hero.jpg" type="image/jpeg">
+            <img src="images/hero.jpg"
+                 class="hero-image"
+                 alt="Главное изображение портфолио - рабочий стол разработчика"
+                 width="1200"
+                 height="600"
+                 loading="eager"
+                 fetchpriority="high">
         </picture>
         <div class="hero-content">
-            <h1 class="display-4 fw-bold mb-3">Моё портфолио</h1>
-            <p class="lead">Студент разработчик • ЭФБО-04-24</p>
+            <h1 id="hero-title" class="display-5 fw-bold mb-3">Моё портфолио</h1>
+            <p class="lead mb-0">Студент разработчик • ЭФБО-04-24</p>
         </div>
     </section>
 
     <!-- Main Content -->
-    <main class="container my-4" id="profile">
+    <main class="container my-5" id="main-content">
         <!-- Profile Section -->
-        <section class="mb-5">
-            <div class="card shadow-sm">
+        <section class="mb-5" aria-labelledby="profile-title">
+            <div class="card shadow-sm border-0">
                 <div class="card-body p-4">
                     <div class="row align-items-center">
                         <div class="col-md-3 text-center mb-3 mb-md-0">
-                            <img src="images/avatar.jpg" alt="Фото студента" class="img-fluid rounded-circle"
-                                 style="width: 150px; height: 150px; object-fit: cover;">
+                            <picture>
+                                <source srcset="images/avatar.png" type="image/png">
+                                <img src="images/avatar.png"
+                                     alt="Фото студента Бесединой Виктории Сергеевны"
+                                     class="img-fluid rounded-circle"
+                                     width="150"
+                                     height="150"
+                                     style="object-fit: cover;"
+                                     loading="eager">
+                            </picture>
                         </div>
                         <div class="col-md-9">
-                            <h2 class="card-title h4 text-success">Беседина Виктория Сергеевна</h2>
+                            <h2 id="profile-title" class="card-title h4 text-primary mb-3">
+                                Беседина Виктория Сергеевна
+                            </h2>
                             <p class="card-text text-muted mb-2">
-                                <i class="bi bi-bookmark-check-fill text-primary"></i>
+                                <i class="bi bi-bookmark-check-fill text-primary" aria-hidden="true"></i>
                                 Студент группы ЭФБО-04-24
                             </p>
-                            <p class="card-text">
-                                Институт перспективных технологий и индустриального программировния
+                            <p class="card-text mb-3">
+                                Институт перспективных технологий и индустриального программирования
                             </p>
-                            <a href="resume.pdf" class="btn btn-primary mt-2" download>
-                                <i class="bi bi-download me-1"></i>Скачать резюме
+                            <a href="resume.pdf" class="btn btn-primary mt-2" download aria-label="Скачать резюме">
+                                <i class="bi bi-download me-1" aria-hidden="true"></i>Скачать резюме
                             </a>
                             <div class="d-flex gap-2 flex-wrap mt-3">
-                                <span class="badge bg-danger">HTML/CSS</span>
-                                <span class="badge bg-warning">Python</span>
-                                <span class="badge bg-success">C++</span>
-                                <span class="badge bg-info">JavaScript</span>
-                                <span class="badge bg-primary">Bootstrap</span>
-                                <span class="badge bg-secondary">React</span>
+                                <span class="badge badge-custom-danger">HTML/CSS</span>
+                                <span class="badge badge-custom-warning">Python</span>
+                                <span class="badge badge-custom-success">C++</span>
+                                <span class="badge badge-custom-info">JavaScript</span>
+                                <span class="badge badge-custom-primary">Bootstrap</span>
+                                <span class="badge badge-custom-secondary">React</span>
                             </div>
                         </div>
                     </div>
@@ -183,13 +310,13 @@
             <div class="card shadow-sm">
                 <div class="card-header bg-light">
                     <h3 class="card-title h5 mb-0">
-                        <i class="bi bi-person-circle text-primary"></i>
+                        <i class="bi bi-person-circle text-primary" aria-hidden="true"></i>
                         Обо мне
                     </h3>
                 </div>
                 <div class="card-body">
                     <p class="card-text">
-                        Я увлекаюсь веб-разработкой и изучаю современную кухню в майнрафте.
+                        Я увлекаюсь веб-разработкой и изучаю современную кухню в майнкрафте.
                         В свободное время занимаюсь созданием пет-проектов, изучаю новые фреймворки и готовлю админу
                         сервера.
                     </p>
@@ -207,7 +334,7 @@
             <div class="card shadow-sm">
                 <div class="card-header bg-light">
                     <h3 class="card-title h5 mb-0">
-                        <i class="bi bi-tools text-primary"></i>
+                        <i class="bi bi-tools text-primary" aria-hidden="true"></i>
                         Мои навыки
                     </h3>
                 </div>
@@ -220,7 +347,14 @@
                                     <span class="text-dark">15%</span>
                                 </div>
                                 <div class="progress" style="height: 8px;">
-                                    <div class="progress-bar bg-danger" style="width: 15%"></div>
+                                    <div class="progress-bar bg-danger"
+                                         style="width: 15%"
+                                         role="progressbar"
+                                         aria-valuenow="15"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"
+                                         aria-label="Уровень навыка HTML/CSS: 15 процентов">
+                                    </div>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -229,7 +363,14 @@
                                     <span class="text-dark">75%</span>
                                 </div>
                                 <div class="progress" style="height: 8px;">
-                                    <div class="progress-bar bg-warning" style="width: 75%"></div>
+                                    <div class="progress-bar bg-warning"
+                                         style="width: 75%"
+                                         role="progressbar"
+                                         aria-valuenow="75"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"
+                                         aria-label="Уровень навыка Python: 75 процентов">
+                                    </div>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -238,7 +379,14 @@
                                     <span class="text-dark">15%</span>
                                 </div>
                                 <div class="progress" style="height: 8px;">
-                                    <div class="progress-bar bg-success" style="width: 15%"></div>
+                                    <div class="progress-bar bg-success"
+                                         style="width: 15%"
+                                         role="progressbar"
+                                         aria-valuenow="15"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"
+                                         aria-label="Уровень навыка JavaScript: 15 процентов">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -249,7 +397,14 @@
                                     <span class="text-dark">5%</span>
                                 </div>
                                 <div class="progress" style="height: 8px;">
-                                    <div class="progress-bar bg-info" style="width: 5%"></div>
+                                    <div class="progress-bar bg-info"
+                                         style="width: 5%"
+                                         role="progressbar"
+                                         aria-valuenow="5"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"
+                                         aria-label="Уровень навыка Bootstrap: 5 процентов">
+                                    </div>
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -258,7 +413,14 @@
                                     <span class="text-dark">2%</span>
                                 </div>
                                 <div class="progress" style="height: 8px;">
-                                    <div class="progress-bar bg-primary" style="width: 2%"></div>
+                                    <div class="progress-bar bg-primary"
+                                         style="width: 2%"
+                                         role="progressbar"
+                                         aria-valuenow="2"
+                                         aria-valuemin="0"
+                                         aria-valuemax="100"
+                                         aria-label="Уровень навыка React: 2 процента">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -272,29 +434,29 @@
             <div class="card shadow-sm">
                 <div class="card-header bg-light">
                     <h3 class="card-title h5 mb-0">
-                        <i class="bi bi-folder-fill text-primary"></i>
+                        <i class="bi bi-folder-fill text-primary" aria-hidden="true"></i>
                         Мои проекты
                     </h3>
                 </div>
                 <div class="card-body">
-                    <div class="row g-3">
-                        <div class="col-md-4">
-                            <div class="card h-100">
-                                <img src="images/site.png" class="card-img-top" alt="Личный сайт"
-                                     style="height: 150px; object-fit: cover;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Личный сайт</h5>
-                                    <p class="card-text small text-muted">
-                                        Сайт-портфолио на HTML, CSS и Bootstrap с адаптивным дизайном.
-                                    </p>
-                                    <a href="https://github.com/ishikhin?tab=repositories" class="btn btn-link">
-                                        Ссылка на личную страницу
-                                    </a>
-                                    <div class="mb-2">
-                                        <span class="badge bg-primary">HTML</span>
-                                        <span class="badge bg-primary">CSS</span>
-                                        <span class="badge bg-primary">Bootstrap</span>
-                                    </div>
+                    <div class="projects-grid">
+                        <div class="project-card card h-100">
+                            <picture>
+                                <source srcset="images/site.jpg" type="image/jpg">
+                                <img src="images/site.jpg" class="card-img-top" alt="Личный сайт портфолио"
+                                     style="height: 150px; object-fit: cover;" width="300" height="150">
+                            </picture>
+                            <div class="card-body d-flex flex-column">
+                                <h4 class="card-title">Личный сайт</h4>
+                                <p class="card-text small text-muted flex-grow-1">
+                                    Сайт-портфолио на HTML, CSS и Bootstrap с адаптивным дизайном.
+                                </p>
+                                <a href="https://github.com/ishikhin?tab=repositories" class="btn btn-link">
+                                    Ссылка на личную страницу
+                                </a>
+                                <div class="mb-2">
+                                    <span class="badge badge-custom-danger">HTML/CSS</span>
+                                    <span class="badge badge-custom-primary">Bootstrap</span>
                                 </div>
                             </div>
                         </div>
@@ -305,7 +467,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4 mt-5">
+    <footer class="bg-dark text-white py-4 mt-5 safe-footer">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
